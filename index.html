@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sunflix</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      * {
+        scrollbar-width: none;
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body class="bg-[#2ab7e0] h-auto">
+    <header class="mt-2 bg-[#074154] mx-1 rounded-full">
+      <img
+        src="./title.png"
+        alt="title"
+        class="max-w-full h-auto lg:w-[20%] md:w-[30%] sm:w-[40%] rounded-2xl m-auto"
+      />
+    </header>
+
+    <div
+      class="w-100% grid lg:grid-cols-5 sm:grid-cols-2 justify-center align-center mx-auto CONTAINER justify-items-center"
+      id="container"
+    >
+      <div
+        class="bg-red-100 border-gray-400 rounded-2xl mt-2 ml-2 pb-4 p-2 CARD max-w-[300px] min-w-[150px] cursor-pointer"
+      >
+        <img src="./mov1.jfif " alt="move1" class="rounded-lg" />
+        <p class="text-2xl text-center text-red-400 font-bold">Thummbad</p>
+      </div>
+      <div
+        class="bg-red-100 border-gray-400 rounded-2xl mt-2 ml-2 pb-4 p-2 CARD min-w-[150px] max-w-[300px] cursor-pointer"
+      >
+        <img src="./mov1.jfif " alt="move1" class="rounded-lg" />
+        <p class="text-2xl text-center text-red-400 font-bold">Thummbad</p>
+      </div>
+      <div
+        class="bg-red-100 border-gray-400 rounded-2xl mt-2 ml-2 pb-4 p-2 CARD min-w-[150px] max-w-[300px] cursor-pointer"
+      >
+        <img src="./mov1.jfif " alt="move1" class="rounded-lg" />
+        <p class="text-2xl text-center text-red-400 font-bold">Thummbad</p>
+      </div>
+      <div
+        class="bg-red-100 border-gray-400 rounded-2xl mt-2 ml-2 pb-4 p-2 CARD min-w-[150px] max-w-[300px] cursor-pointer"
+      >
+        <img src="./mov1.jfif " alt="move1" class="rounded-lg" />
+        <p class="text-2xl text-center text-red-400 font-bold">Thummbad</p>
+      </div>
+    </div>
+    <div
+      id="selected-mve"
+      class="min-w-[400px] Selected-Movie bg-[#074154] max-w-[600px] p-4 mx-auto rounded-2xl mt-4 top-1 left-[50%] fixed hidden translate-x-[-50%] overflow-auto max-h-[100vh] border-2 border-slate-300"
+    >
+      <div
+        class="font-bold text-4xl text-slate-100 absolute right-[8%] z-2 cursor-pointer"
+      >
+        <i onclick="closePlayer()" class="fa-solid fa-times"></i>
+      </div>
+      <img src="./mov1.jfif" alt="movie1" class="w-[100%] rounded-2xl" />
+      <div class="mx-auto">
+        <p class="font-serif text-2xl text-slate-200 pt-4">
+          Thummbad is a most vibrant movie that has took 6 years to make discuss
+          about the human greed
+        </p>
+      </div>
+      <div class="video-cont mx-auto p-1 bg-slate-100 my-4 rounded-xl">
+        <video
+          src="https://knightbucket99.s3.eu-north-1.amazonaws.com/Tummbaad.mp4"
+          class="w-[100%] h-auto rounded-2xl shadow-lg actual-vid"
+          controls
+        ></video>
+      </div>
+    </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      const container = document.getElementById("container");
+      container.addEventListener("click", (e) => {
+        if (e.target.closest(".CARD")) {
+          document.getElementById("selected-mve").style.display = "block";
+        }
+      });
+      function closePlayer() {
+        document.querySelector(".actual-vid").pause();
+        document.getElementById("selected-mve").style.display = "none";
+      }
+
+      document.addEventListener("contextmenu", (event) =>
+        event.preventDefault()
+      );
+
+      document.addEventListener("keydown", (event) => {
+        if (
+          event.key === "F12" || // F12 (DevTools)
+          (event.ctrlKey && event.key === "u") ||
+          (event.ctrlKey && event.key === "U") || // Ctrl + U (View Page Source)
+          (event.ctrlKey && event.shiftKey && event.key === "I") ||
+          (event.ctrlKey && event.shiftKey && event.key === "i") || // Ctrl + Shift + I (DevTools)
+          (event.ctrlKey && event.shiftKey && event.key === "J") ||
+          (event.ctrlKey && event.shiftKey && event.key === "j") || // Ctrl + Shift + J (DevTools)
+          (event.ctrlKey && event.key === "s") ||
+          (event.ctrlKey && event.key === "S") // Ctrl + S (Save Page)
+        ) {
+          event.preventDefault();
+          alert("Developer tools are disabled!");
+        }
+      });
+    </script>
+  </body>
+</html>
